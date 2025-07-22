@@ -1,8 +1,8 @@
-# AI Code Push - 智能代码推送系统
+# AI Code Push - AI代码审查工作流
 
 ## 项目概述
 
-AI Code Push 是一个基于 Spring AI Alibaba 技术栈的智能代码评审系统，采用单体架构设计，支持多AI模型动态扩展。系统通过Git事件监听、代码质量分析、需求文档管理、开发进度跟踪等核心功能，为开发团队提供智能化的代码管理和协作支持。
+AI Code Push 是一个基于 Spring AI Alibaba 技术栈的智能代码审查系统，采用单体架构设计，支持多AI模型动态扩展。系统通过Git事件监听、代码质量分析、需求文档管理、开发进度跟踪等核心功能，为开发团队提供智能化的代码管理和协作支持。
 
 ### 核心特性
 
@@ -14,6 +14,7 @@ AI Code Push 是一个基于 Spring AI Alibaba 技术栈的智能代码评审系
 - ⚡ **异步处理**：支持大规模代码库的并行分析和处理
 
 ### 主要功能
+
 1. 代码规范：支持自定义统一的代码风格模板、代码质量审查规则
 2. 分支管理：功能开发分支与需求文档关联，自动跟踪需求开发进度与质量
 3. 代码审查：分支合并前必须通过大模型和人工审查，保证代码质量
@@ -56,57 +57,41 @@ AI Code Push 是一个基于 Spring AI Alibaba 技术栈的智能代码评审系
 
 ### 基础支撑层 (code-common)
 
-#### code-common-config
-- **功能**：集中管理所有配置，支持AI模型参数、Git仓库地址、任务调度规则等
+code-common-config ：集中管理所有配置
 
-#### code-common-core
-- **功能**：核心依赖和全局处理器
+code-common-core：核心依赖
 
-#### code-common-util
-- **功能**：通用工具类库
+code-common-util：通用工具类库
 
-#### code-common-log
-- **功能**：统一日志格式
+code-common-log：统一日志输出
 
-#### code-common-net
-- **功能**：网络通信相关工具和配置，包括MCP、SSE等
+code-common-net：网络通信相关工具和配置，包括MCP、SSE等
 
 ### 能力中台层 (code-capability)
 
-#### code-model-registry
-- **功能**：AI模型注册中心，管理模型权重、元数据等
+code-model-registry：AI模型注册中心，管理模型权重、元数据等
 
-#### code-ai-router
-- **功能**：AI路由引擎，根据业务场景智能选择最优模型，目前用spring-ai-alibaba-jmanus实现
+code-ai-router：AI路由引擎，根据业务场景智能选择最优模型，目前用spring-ai-alibaba-jmanus实现
 
-#### code-async-task
-- **功能**：异步任务中心，主要分析逻辑
+code-async-task：异步任务中心，核心分析逻辑任务
 
-#### code-ai-cluster
-- **功能**：AI集群协作，分为多个模型集群，通过协作算法减少幻觉输出
+code-ai-cluster：AI集群协作，分为多个模型集群，通过协作减少幻觉输出
 
-#### code-ai-graph
-- **功能**: AI工作流与智能体调度引擎，目前用spring-ai-alibaba-graph实现
+code-ai-graph：AI工作流与智能体调度引擎，目前用spring-ai-alibaba-graph实现
 
 ### 业务场景层 (code-business)
 
-#### code-admin
-- **功能**：系统管理模块，提供Web管理界面和API接口
+code-admin：系统管理模块，提供Web管理界面和API接口
 
-#### code-analyzer
-- **功能**：代码质量分析引擎
+code-analyzer：代码质量分析引擎
 
-#### code-demand-analyzer
-- **功能**：需求分析引擎
+code-demand-analyzer：需求分析引擎
 
-#### code-git-tracker
-- **功能**：Git事件监听和追踪
+code-git-tracker：Git事件监听和追踪
 
-#### code-report
-- **功能**：报表生成和展示
+code-report：报表生成和展示
 
-#### code-doc
-- **功能**：文档管理和RAG增强
+code-doc：文档管理和RAG增强
 
 
 ## 许可证
