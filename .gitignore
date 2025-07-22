@@ -1,0 +1,5 @@
+code-push-service/.idea
+code-push-service/code-common/code-common-util/target
+code-push-service/logs
+code-push-service/code-common/code-common-core/target
+code-push-service/code-business/code-admin/target

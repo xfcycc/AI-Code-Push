@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>code-push-service</artifactId>
+        <groupId>io.github.xfcycc</groupId>
+        <version>${revision}</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <modules>
+        <module>code-doc</module>
+        <module>code-git-tracker</module>
+        <module>code-analyzer</module>
+        <module>code-report</module>
+        <module>code-admin</module>
+        <module>code-demand-analyzer</module>
+    </modules>
+
+    <artifactId>code-business</artifactId>
+    <packaging>pom</packaging>
+
+    <description>
+        业务模块
+    </description>
+
+</project>
