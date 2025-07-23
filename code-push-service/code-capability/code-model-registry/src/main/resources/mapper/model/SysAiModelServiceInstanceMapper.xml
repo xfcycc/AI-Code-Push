@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.github.xfcycc.model.registry.mapper.SysAiModelServiceInstanceMapper">
+  <resultMap id="BaseResultMap" type="io.github.xfcycc.model.registry.entity.SysAiModelServiceInstance">
+    <!--@mbg.generated-->
+    <!--@Table code_push.sys_ai_model_service_instance-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="service_name" jdbcType="VARCHAR" property="serviceName" />
+    <result column="instance_id" jdbcType="VARCHAR" property="instanceId" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="port" jdbcType="INTEGER" property="port" />
+    <result column="weight" jdbcType="DOUBLE" property="weight" />
+    <result column="healthy" jdbcType="BOOLEAN" property="healthy" />
+    <result column="enabled" jdbcType="BOOLEAN" property="enabled" />
+    <result column="metadata" jdbcType="LONGVARCHAR" property="metadata" />
+    <result column="last_beat" jdbcType="TIMESTAMP" property="lastBeat" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, service_name, instance_id, ip, port, weight, healthy, enabled, metadata, last_beat, 
+    is_deleted, create_time, update_time
+  </sql>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update code_push.sys_ai_model_service_instance
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="service_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.serviceName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="instance_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.instanceId,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="ip = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.ip,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="port = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.port,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="weight = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.weight,jdbcType=DOUBLE}
+        </foreach>
+      </trim>
+      <trim prefix="healthy = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.healthy,jdbcType=BOOLEAN}
+        </foreach>
+      </trim>
+      <trim prefix="enabled = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.enabled,jdbcType=BOOLEAN}
+        </foreach>
+      </trim>
+      <trim prefix="metadata = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.metadata,jdbcType=LONGVARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="last_beat = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.lastBeat,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="is_deleted = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.isDeleted,jdbcType=TINYINT}
+        </foreach>
+      </trim>
+      <trim prefix="create_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.createTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="update_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.updateTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into code_push.sys_ai_model_service_instance
+    (service_name, instance_id, ip, port, weight, healthy, enabled, metadata, last_beat, 
+      is_deleted, create_time, update_time)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.serviceName,jdbcType=VARCHAR}, #{item.instanceId,jdbcType=VARCHAR}, #{item.ip,jdbcType=VARCHAR}, 
+        #{item.port,jdbcType=INTEGER}, #{item.weight,jdbcType=DOUBLE}, #{item.healthy,jdbcType=BOOLEAN}, 
+        #{item.enabled,jdbcType=BOOLEAN}, #{item.metadata,jdbcType=LONGVARCHAR}, #{item.lastBeat,jdbcType=TIMESTAMP}, 
+        #{item.isDeleted,jdbcType=TINYINT}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.updateTime,jdbcType=TIMESTAMP}
+        )
+    </foreach>
+  </insert>
+</mapper>

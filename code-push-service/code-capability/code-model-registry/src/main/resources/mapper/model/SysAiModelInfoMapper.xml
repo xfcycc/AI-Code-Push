@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.github.xfcycc.model.registry.mapper.SysAiModelInfoMapper">
+  <resultMap id="BaseResultMap" type="io.github.xfcycc.model.registry.entity.SysAiModelInfo">
+    <!--@mbg.generated-->
+    <!--@Table code_push.sys_ai_model_info-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="model_name" jdbcType="VARCHAR" property="modelName" />
+    <result column="model_type" jdbcType="VARCHAR" property="modelType" />
+    <result column="provider" jdbcType="VARCHAR" property="provider" />
+    <result column="version" jdbcType="VARCHAR" property="version" />
+    <result column="base_url" jdbcType="VARCHAR" property="baseUrl" />
+    <result column="api_key_required" jdbcType="BOOLEAN" property="apiKeyRequired" />
+    <result column="max_tokens" jdbcType="INTEGER" property="maxTokens" />
+    <result column="rate_limit" jdbcType="INTEGER" property="rateLimit" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="metadata" jdbcType="LONGVARCHAR" property="metadata" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, model_name, model_type, provider, version, base_url, api_key_required, max_tokens, 
+    rate_limit, `status`, metadata, is_deleted, create_time, update_time
+  </sql>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update code_push.sys_ai_model_info
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="model_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.modelName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="model_type = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.modelType,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="provider = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.provider,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="version = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.version,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="base_url = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.baseUrl,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="api_key_required = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.apiKeyRequired,jdbcType=BOOLEAN}
+        </foreach>
+      </trim>
+      <trim prefix="max_tokens = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.maxTokens,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="rate_limit = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.rateLimit,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="`status` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.status,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="metadata = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.metadata,jdbcType=LONGVARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="is_deleted = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.isDeleted,jdbcType=TINYINT}
+        </foreach>
+      </trim>
+      <trim prefix="create_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.createTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="update_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.updateTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into code_push.sys_ai_model_info
+    (model_name, model_type, provider, version, base_url, api_key_required, max_tokens, 
+      rate_limit, `status`, metadata, is_deleted, create_time, update_time)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.modelName,jdbcType=VARCHAR}, #{item.modelType,jdbcType=VARCHAR}, #{item.provider,jdbcType=VARCHAR}, 
+        #{item.version,jdbcType=VARCHAR}, #{item.baseUrl,jdbcType=VARCHAR}, #{item.apiKeyRequired,jdbcType=BOOLEAN}, 
+        #{item.maxTokens,jdbcType=INTEGER}, #{item.rateLimit,jdbcType=INTEGER}, #{item.status,jdbcType=VARCHAR}, 
+        #{item.metadata,jdbcType=LONGVARCHAR}, #{item.isDeleted,jdbcType=TINYINT}, #{item.createTime,jdbcType=TIMESTAMP}, 
+        #{item.updateTime,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+</mapper>
