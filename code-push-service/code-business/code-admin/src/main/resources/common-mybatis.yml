@@ -28,6 +28,7 @@ mybatis-plus:
       logicDeleteValue: 1
       # 逻辑未删除值
       logicNotDeleteValue: 0
+      logicDeleteColumn: is_deleted
       insertStrategy: NOT_NULL
       updateStrategy: NOT_NULL
       whereStrategy: NOT_NULL
